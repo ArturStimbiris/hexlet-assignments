@@ -1,20 +1,20 @@
 package exercise;
 
 public class Point {
-    private int X;
-    private int Y;
+    private int coordX;
+    private int coordY;
 
-    public Point(int X, int Y) {
-        this.X = X;
-        this.Y = Y;
+    public Point(int coordX, int coordY) {
+        this.coordX = coordX;
+        this.coordY = coordY;
     }
 
     public int getX() {
-        return this.X;
+        return this.coordX;
     }
 
     public int getY() {
-        return this.Y;
+        return this.coordY;
     }
 }
 
