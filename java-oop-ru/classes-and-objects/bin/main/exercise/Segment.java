@@ -5,7 +5,7 @@ public class Segment {
     private Point end;
 
     public Segment(Point begin, Point end) {
-        this.start = start;
+        this.begin = begin;
         this.end = end;
     }
 
@@ -18,8 +18,8 @@ public class Segment {
     }
 
     public Point getMidPoint() {
-        var midX = (begin.getX + end.getX) / 2;
-        var midY = (begin.getY + end.getY) / 2;
+        var midX = (begin.getX() + end.getX()) / 2;
+        var midY = (begin.getY() + end.getY()) / 2;
         return new Point(midX, midY);
     }
 }
