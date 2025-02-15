@@ -1,36 +1,27 @@
 package exercise;
 
 import java.util.Map;
-import java.util.HashMap;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class FileKV implements KeyValueStorage {
-    private String filePath;
+    private String filepath;
     private Map<String, String> storage;
 
-    public FileKV(String filePath, Map<String, String> initialData) {
-        this.filePath = filePath;
-        // Если файл существует, загружаем данные с диска
-        if (Files.exists(Paths.get(filePath))) {
-            loadFromFile();
-        } else {
-            // Если файла нет, используем начальные данные
-            this.storage = new HashMap<>(initialData);
-            saveToFile(); // Сохраняем начальные данные на диск
-        }
+    public FileKV(String filepath, Map<String, String> initialData) {
+        this.filepath = filepath;
+        this.storage = new HashMap<>(initialData);
+        saveToFile();
     }
 
     @Override
     public void set(String key, String value) {
         storage.put(key, value);
-        saveToFile(); // Сохраняем изменения на диск
+        saveToFile();
     }
 
     @Override
     public void unset(String key) {
         storage.remove(key);
-        saveToFile(); // Сохраняем изменения на диск
+        saveToFile();
     }
 
     @Override
@@ -44,12 +35,12 @@ public class FileKV implements KeyValueStorage {
     }
 
     private void saveToFile() {
-        String serializedData = Utils.serialize(storage);
-        Utils.writeFile(filePath, serializedData);
+        String content = Utils.serialize(storage);
+        Utils.writeFile(filepath, content);
     }
 
     private void loadFromFile() {
-        String fileContent = Utils.readFile(filePath);
-        storage = Utils.deserialize(fileContent);
+        String content = Utils.readFile(filepath);
+        storage = Utils.deserialize(content);
     }
 }
