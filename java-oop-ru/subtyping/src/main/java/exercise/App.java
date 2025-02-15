@@ -1,6 +1,7 @@
 package exercise;
 
 import java.util.Map;
+import java.util.HashMap;
 
 public class App {
     public static void swapKeyValue(KeyValueStorage storage) {
