@@ -11,24 +11,26 @@ public class FileKV implements KeyValueStorage {
 
     public FileKV(String filePath, Map<String, String> initialData) {
         this.filePath = filePath;
+        // Если файл существует, загружаем данные с диска
         if (Files.exists(Paths.get(filePath))) {
             loadFromFile();
         } else {
+            // Если файла нет, используем начальные данные
             this.storage = new HashMap<>(initialData);
-            saveToFile();
+            saveToFile(); // Сохраняем начальные данные на диск
         }
     }
 
     @Override
     public void set(String key, String value) {
         storage.put(key, value);
-        saveToFile();
+        saveToFile(); // Сохраняем изменения на диск
     }
 
     @Override
     public void unset(String key) {
         storage.remove(key);
-        saveToFile();
+        saveToFile(); // Сохраняем изменения на диск
     }
 
     @Override
