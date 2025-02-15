@@ -41,7 +41,7 @@ class FileKVTest {
         assertThat(storage.get("key2", "default")).isEqualTo("default");
 
         assertThat(storage.toMap()).isEqualTo(Map.of("key", "value"));
-}
+    }
 
     @Test
     void testFileKVPersistence() throws Exception {
