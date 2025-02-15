@@ -1,4 +1,5 @@
 package exercise;
+import exercise.ReversedSequence;
 
 import java.util.List;
 import java.util.stream.Collectors;
