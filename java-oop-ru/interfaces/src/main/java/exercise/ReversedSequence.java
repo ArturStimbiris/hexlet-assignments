@@ -1,4 +1,4 @@
-package exercise;
+package main.java.exercise;
 
 // BEGIN
 public class ReversedSequence implements CharSequence {
