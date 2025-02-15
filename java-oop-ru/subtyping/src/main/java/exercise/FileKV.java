@@ -2,6 +2,8 @@ package exercise;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileKV implements KeyValueStorage {
     private String filePath;
@@ -9,8 +11,12 @@ public class FileKV implements KeyValueStorage {
 
     public FileKV(String filePath, Map<String, String> initialData) {
         this.filePath = filePath;
-        this.storage = new HashMap<>(initialData);
-        saveToFile();
+        if (Files.exists(Paths.get(filePath))) {
+            loadFromFile();
+        } else {
+            this.storage = new HashMap<>(initialData);
+            saveToFile();
+        }
     }
 
     @Override
@@ -27,13 +33,11 @@ public class FileKV implements KeyValueStorage {
 
     @Override
     public String get(String key, String defaultValue) {
-        loadFromFile();
         return storage.getOrDefault(key, defaultValue);
     }
 
     @Override
     public Map<String, String> toMap() {
-        loadFromFile();
         return new HashMap<>(storage);
     }
 

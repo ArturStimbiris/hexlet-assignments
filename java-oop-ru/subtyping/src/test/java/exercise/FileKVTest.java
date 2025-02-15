@@ -45,17 +45,17 @@ class FileKVTest {
 
     @Test
     void testFileKVPersistence() throws Exception {
-    KeyValueStorage storage = new FileKV(filepath.toString(), Map.of("key", "value"));
+        KeyValueStorage storage = new FileKV(filepath.toString(), Map.of("key", "value"));
 
-    assertThat(storage.get("key", "default")).isEqualTo("value");
+        assertThat(storage.get("key", "default")).isEqualTo("value");
 
-    storage.set("key2", "value2");
-    assertThat(storage.get("key2", "default")).isEqualTo("value2");
+        storage.set("key2", "value2");
+        assertThat(storage.get("key2", "default")).isEqualTo("value2");
 
-    KeyValueStorage newStorage = new FileKV(filepath.toString(), Map.of());
-    assertThat(newStorage.get("key", "default")).isEqualTo("value");
-    assertThat(newStorage.get("key2", "default")).isEqualTo("value2");
-}
+        KeyValueStorage newStorage = new FileKV(filepath.toString(), Map.of());
+        assertThat(newStorage.get("key", "default")).isEqualTo("value");
+        assertThat(newStorage.get("key2", "default")).isEqualTo("value2");
+    }
 
     @Test
     void testFileKVInitialData() {
