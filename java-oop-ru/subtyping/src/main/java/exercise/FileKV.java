@@ -3,7 +3,6 @@ package exercise;
 import java.util.Map;
 import java.util.HashMap;
 
-// BEGIN
 public class FileKV implements KeyValueStorage {
     private String filePath;
     private Map<String, String> storage;
@@ -28,11 +27,13 @@ public class FileKV implements KeyValueStorage {
 
     @Override
     public String get(String key, String defaultValue) {
+        loadFromFile();
         return storage.getOrDefault(key, defaultValue);
     }
 
     @Override
     public Map<String, String> toMap() {
+        loadFromFile();
         return new HashMap<>(storage);
     }
 
@@ -46,4 +47,3 @@ public class FileKV implements KeyValueStorage {
         storage = Utils.deserialize(fileContent);
     }
 }
-// END
