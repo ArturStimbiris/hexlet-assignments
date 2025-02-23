@@ -48,7 +48,7 @@ public class Validator {
 
             if (field.isAnnotationPresent(MinLength.class)) {
                 MinLength minLengthAnnotation = field.getAnnotation(MinLength.class);
-                int minLength = minLengthAnnotation.minLength();
+                int minLength = minLengthAnnotation.minLength(); // Получаем минимальную длину
                 try {
                     String value = (String) field.get(obj);
                     if (value != null && value.length() < minLength) {
