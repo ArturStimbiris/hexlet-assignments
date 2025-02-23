@@ -1,5 +1,4 @@
 package exercise;
-import exercise.MinLength;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -8,26 +7,6 @@ import java.util.List;
 import java.util.Map;
 // BEGIN
 public class Validator {
-
-    public static List<String> validate(Object obj) {
-        List<String> notValidFields = new ArrayList<>();
-        Class<?> clazz = obj.getClass();
-
-        for (Field field : clazz.getDeclaredFields()) {
-            if (field.isAnnotationPresent(NotNull.class)) {
-                field.setAccessible(true);
-                try {
-                    if (field.get(obj) == null) {
-                        notValidFields.add(field.getName());
-                    }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return notValidFields;
-    }
 
     public static Map<String, List<String>> advancedValidate(Object obj) {
         Map<String, List<String>> errors = new HashMap<>();
