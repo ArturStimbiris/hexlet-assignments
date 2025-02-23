@@ -33,13 +33,17 @@ class ValidationTest {
         Address address = new Address("USA", "Texas", null, "7", "2");
         Map<String, List<String>> notValidFields = Validator.advancedValidate(address);
 
-        assertTrue(notValidFields.containsKey("street"));
-        assertTrue(notValidFields.get("street").contains("can not be null"));
+        assertThat(notValidFields)
+                .containsKey("street")
+                .satisfies(streetErrors -> assertThat(streetErrors.get("street"))
+                        .contains("can not be null"));
 
-        assertTrue(notValidFields.containsKey("country"));
-        assertTrue(notValidFields.get("country").contains("length less than 4"));
+        assertThat(notValidFields)
+                .containsKey("country")
+                .satisfies(countryErrors -> assertThat(countryErrors.get("country"))
+                        .contains("length less than 4"));
 
-        assertEquals(2, notValidFields.size());
+        assertThat(notValidFields).hasSize(2);
     }
     // END
 }
