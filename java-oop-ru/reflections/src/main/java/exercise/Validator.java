@@ -49,7 +49,7 @@ public class Validator {
 
             if (field.isAnnotationPresent(MinLength.class)) {
                 MinLength minLengthAnnotation = field.getAnnotation(MinLength.class);
-                int minLength = minLengthAnnotation.value();
+                int minLength = minLengthAnnotation.minLength();
                 try {
                     String value = (String) field.get(obj);
                     if (value != null && value.length() < minLength) {
