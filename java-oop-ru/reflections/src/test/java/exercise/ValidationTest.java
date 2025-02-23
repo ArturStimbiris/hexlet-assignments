@@ -38,5 +38,6 @@ class ValidationTest {
         expectedErrors.put("street", List.of("can not be null"));
         expectedErrors.put("country", List.of("length less than 4"));
         assertThat(notValidFields).isEqualTo(expectedErrors);
+    }
     // END
 }
