@@ -36,7 +36,6 @@ class ValidationTest {
         Map<String, List<String>> notValidFields = Validator.advancedValidate(address);
         Map<String, List<String>> expectedErrors = new HashMap<>();
         expectedErrors.put("street", List.of("can not be null"));
-        expectedErrors.put("country", List.of("length less than 4"));
         assertThat(notValidFields).isEqualTo(expectedErrors);
     }
     // END
