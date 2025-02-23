@@ -1,4 +1,5 @@
 package exercise;
+import exercise.MinLength;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

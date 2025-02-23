@@ -7,17 +7,17 @@ class Address {
     private String country;
 
     // BEGIN
-    @NotNull    
+    @NotNull
     // END
     private String city;
 
     // BEGIN
-    @NotNull    
+    @NotNull
     // END
     private String street;
 
     // BEGIN
-    @NotNull    
+    @NotNull
     // END
     private String houseNumber;
 
